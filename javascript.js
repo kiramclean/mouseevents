@@ -1,4 +1,4 @@
-const mouseBox = document.querySelector('#mouse-events');
+const mouseBox = document.querySelector('#mouse-eventTypes');
 
 console.log(mouseBox);
 
