@@ -12,6 +12,9 @@ const eventTypes = [
   "mouseout",
   "mouseover",
   "mouseup",
+  "touchstart",
+  "touchmove",
+  "touchend"
   "wheel"
 ];
 
