@@ -33,7 +33,7 @@ const eventTypes = [
 ];
 
 for (let event of eventTypes) {
-  mouseBox.addEventListener(event, log);
+  mouseBox!.addEventListener(event, log);
 }
 
 function log(event: MouseEvent) {
@@ -61,7 +61,7 @@ function appendToLog(event: MouseEvent) {
   const text = document.createTextNode(`→ ${event.type}: ${event.button}`);
   p.appendChild(text);
   const logBox = document.querySelector("#log");
-  logBox.appendChild(p);
+  logBox!.appendChild(p);
   p.scrollIntoView(false);
 }
 

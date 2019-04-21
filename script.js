@@ -1,6 +1,19 @@
+// TODO:
+// - select pointer events
+//    - pop down checkboxes for all the pointer events
+//    - select all pointer events
+// - select touch events
+//    - pop down checkboxes for all the touch events
+//    - select all touch events
+// - select mouse events
+//    - pop down checkboxes for all the mouse events
+//    - select all mouse events
+// - hide scroll bar on mouse pane
+// - tooltips for mouse event descriptions
+//    - links to MDN
 document.oncontextmenu = suppressContextMenu;
-var mouseBox = document.querySelector("#mouse-events");
-var eventTypes = [
+const mouseBox = document.querySelector("#mouse-events");
+const eventTypes = [
     "click",
     "dblclick",
     "mousedown",
@@ -10,16 +23,18 @@ var eventTypes = [
     "mouseout",
     "mouseover",
     "mouseup",
+    "touchstart",
+    "touchmove",
+    "touchend",
     "wheel"
 ];
-for (var _i = 0, eventTypes_1 = eventTypes; _i < eventTypes_1.length; _i++) {
-    var event_1 = eventTypes_1[_i];
-    mouseBox.addEventListener(event_1, log);
+for (let event of eventTypes) {
+    mouseBox.addEventListener(event, log);
 }
 function log(event) {
-    var eventsToLog = [];
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach(function (input) {
+    const eventsToLog = [];
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(input => {
         if (input.checked) {
             eventsToLog.push(input.value);
         }
@@ -31,10 +46,10 @@ function log(event) {
     appendToLog(event);
 }
 function appendToLog(event) {
-    var p = document.createElement("p");
-    var text = document.createTextNode("\u2192 " + event.type + ": " + event.button);
+    const p = document.createElement("p");
+    const text = document.createTextNode(`→ ${event.type}: ${event.button}`);
     p.appendChild(text);
-    var logBox = document.querySelector("#log");
+    const logBox = document.querySelector("#log");
     logBox.appendChild(p);
     p.scrollIntoView(false);
 }
